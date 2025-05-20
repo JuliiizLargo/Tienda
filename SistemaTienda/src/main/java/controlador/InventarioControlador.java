@@ -32,6 +32,7 @@ public class InventarioControlador {
     }
 
     public Producto obtenerProducto(int id){
+
         return null;
     }
 

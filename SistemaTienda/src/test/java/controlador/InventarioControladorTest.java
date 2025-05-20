@@ -40,5 +40,25 @@ public class InventarioControladorTest {
         Assertions.assertEquals(productoEsperado, productoResultado, "Los productos deben ser iguales");
         verify(productoRepositorio, times(1)).agregarProducto(any(Producto.class));
     }
-}
 
+
+
+    @Test
+    void crearProductoException() {
+        // Arrange
+        int id = 1;
+        String nombre = "botella de aguardiente";
+        Double precio = null;
+        String lote = "";
+
+        String mensajeEsperado = "los datos no pueden estar vacios";
+
+        // Act & Assert
+        IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () ->
+                inventarioControlador.agregarProducto(id, precio, lote, nombre)
+        );
+
+        Assertions.assertEquals(mensajeEsperado, exception.getMessage());
+    }
+
+}
