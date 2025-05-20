@@ -16,16 +16,15 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    // Sobrescritura de equals() y hashCode()
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Producto)) return false;
-        Producto producto = (Producto) o;
-        return id == producto.id &&
-                Objects.equals(precio, producto.precio) &&
-                Objects.equals(lote, producto.lote) &&
-                Objects.equals(nombre, producto.nombre);
+        Producto that = (Producto) o;
+        return id == that.id &&
+                Double.compare(precio, that.precio) == 0 &&
+                Objects.equals(lote, that.lote) &&
+                Objects.equals(nombre, that.nombre);
     }
 
     @Override
